@@ -1,21 +1,60 @@
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .post-link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-
-
 footer {
-    min-height: 100px;
-    background-color: #eaecee70;
-    color: #929eaa;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 40px;
-    font-size: 14px;
+  min-height: 100px;
+  background-color: #eaecee70;
+  color: #929eaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+header {
+  min-height: 350px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/assets/banner.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+
+.profile-image {
+  background-color: rgb(255, 255, 255);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-image: url(/assets/profile.jpg);
+  background-size: cover;
+}
+
+.profile-name {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.subtext {
+  margin-top: 8px;
+}
+
+.main {
+  background-color: red;
+  height: 100px;
+  margin-top: 32px;
+  display: flex;
+}
+
+.main-container {
+    
 }
