@@ -78,6 +78,13 @@ header::after {
   border-radius: 8px;
   min-height: 200px;
   overflow: hidden;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.post:hover {
+  transform: translate3d(0, -5px, 0);
+  box-shadow: 0 2rem 5rem 0 rgba(0, 0, 0, 0.1);
 }
 
 .post-image {
