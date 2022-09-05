@@ -53,8 +53,13 @@ header {
   height: 100px;
   margin-top: 32px;
   display: flex;
+  justify-content: center;
 }
 
 .main-container {
-    
+  min-width: 750px;
+  min-width: 600px;
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
 }
