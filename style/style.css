@@ -9,62 +9,47 @@ body {
 
 /* header */
 header {
-  min-height: 350px;
+  min-height: 280px;
+  background-size: cover;
+  background-position: center;
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-image: url(/assets/banner.jpeg);
-  background-size: cover;
-  background-position: center;
 }
-
-/*
-header > * {
-    z-index: 10;
-}
-
-header::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-} */
 
 .profile-image {
   background-color: rgb(255, 255, 255);
-  width: 100px;
-  height: 100px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   background-image: url(/assets/profile.jpg);
   background-size: cover;
 }
 
 .profile-name {
-  font-size: 3em;
+  font-size: 2.4em;
   font-weight: bold;
 }
 
 .subtext {
   margin-top: 8px;
+  font-weight: 400;
 }
 
 /* Main */
 .main {
   margin-top: 32px;
-  /* height: 100px; */
   display: flex;
   justify-content: center;
 }
 
 .main-container {
-  min-width: 750px;
-  min-width: 600px;
   width: 100%;
+  max-width: 750px;
+  min-width: 600px;
   padding-left: 16px;
   padding-right: 16px;
 }
@@ -73,13 +58,13 @@ header::after {
 
 .post {
   display: flex;
-  /* border: 1px solid #eaecee; */
-  border: 1px solid #2e2e2e;
+  border: 1px solid #d1d2d3;
   border-radius: 8px;
   min-height: 200px;
   overflow: hidden;
   transition: all 0.25s ease;
   cursor: pointer;
+  margin-top: 25px;
 }
 
 .post:hover {
@@ -118,12 +103,14 @@ header::after {
 
 .post-text {
   margin-top: 4px;
+  font-size: 0.9em;
   color: #495057;
   font-weight: 400;
   line-height: 1.4;
   max-height: 65px;
   overflow: hidden;
 }
+
 /* footer */
 footer {
   min-height: 100px;
@@ -134,4 +121,26 @@ footer {
   align-items: center;
   margin-top: 40px;
   font-size: 14px;
+}
+
+/* Button */
+.nav-button.new-post-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  background-color: #004186;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: all 0.25s ease;
+}
+
+.nav-button.new-post-button:hover {
+  background-color: #002349;
 }
