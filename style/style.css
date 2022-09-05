@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.post-link {
+    text-decoration: none;
+}
+
+
+
+footer {
+    min-height: 100px;
+    background-color: #eaecee70;
+    color: #929eaa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    font-size: 14px;
+}
