@@ -1,5 +1,31 @@
 const express = require("express");
 const app = express();
+const Joi = require("joi");
+
+const multer = require("multer");
+//const upload = multer({ dest: "images/" });
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./images");
+  },
+  filename: function (req, file, cb) {
+    cb(null, `${file.fieldname}-${Date.now()}${getExt(file.mimetype)}`);
+  },
+});
+
+const getExt = (mimetype) => {
+  switch (mimetype) {
+    case "image/png":
+      return ".png";
+    case "image/jpeg":
+      return ".jpg";
+  }
+};
+
+const upload = multer({ storage: storage });
+
+app.use(express.json());
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -47,6 +73,31 @@ app.get("/api/posts/:post_id", (req, res) => {
   } else {
     res.send(post);
   }
+});
+
+app.post("/api/posts/new", upload.single("post_image"), (req, res) => {
+  // console.log(req.file);
+  const schema = Joi.object({
+    title: Joi.string().min(3).required(),
+    content: Joi.string().required(),
+  });
+
+  const { error, value } = schema.validate(req.body);
+
+  if (error) {
+    res.status(400).send(error.details[0].message);
+  }
+
+  const Post = {
+    id: Posts.length + 1,
+    title: value.title,
+    content: value.content,
+    post_image: req.file.path,
+    added_date: `${Date.now()}`,
+  };
+
+  Posts.push(Post);
+  res.send(Posts);
 });
 
 const port = 3000;
