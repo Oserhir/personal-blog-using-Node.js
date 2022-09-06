@@ -144,3 +144,7 @@ footer {
 .nav-button.new-post-button:hover {
   background-color: #002349;
 }
+
+a.post-link {
+  text-decoration: none;
+}

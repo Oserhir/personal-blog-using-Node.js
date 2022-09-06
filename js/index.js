@@ -5,6 +5,7 @@ window.onload = () => {
   getPosts();
 };
 
+/* Get All list of Posts - HomePage */
 const getPosts = () => {
   fetch(API_URL, {
     method: "GET",
