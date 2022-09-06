@@ -29,7 +29,7 @@ header {
   background-size: cover;
 }
 
-.profile-name {
+.profile-name , .title {
   margin-top: 15px;
   font-size: 2.4em;
   font-weight: bold;

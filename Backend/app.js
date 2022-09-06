@@ -1,7 +1,10 @@
 const express = require("express");
+const { required } = require("joi");
 const app = express();
 const Joi = require("joi");
 
+const Post = require("./api/Models/posts");
+const postData = new Post();
 const multer = require("multer");
 //const upload = multer({ dest: "images/" });
 
@@ -11,6 +14,7 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     cb(null, `${file.fieldname}-${Date.now()}${getExt(file.mimetype)}`);
+    console.log(`${file.fieldname}-${Date.now()}${getExt(file.mimetype)}`);
   },
 });
 
@@ -33,7 +37,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/images", express.static("images"));
-
+/*
 const Posts = [
   {
     id: 1,
@@ -59,15 +63,19 @@ const Posts = [
     post_image: "images/post-image-1581377760883.jpg",
     added_date: "1581461442206",
   },
-];
+]; */
+
+const Posts = postData.get();
 
 app.get("/api/posts", (req, res) => {
+  // res.status(200).send(Posts);
   res.status(200).send(Posts);
 });
 
 app.get("/api/posts/:post_id", (req, res) => {
-  let post = Posts.find((post) => parseInt(req.params.post_id) === post.id);
+  // let post = Posts.find((post) => parseInt(req.params.post_id) === post.id);
 
+  let post = Posts.find((post) => req.params.post_id === post.id);
   if (!post) {
     return res.status(404).send("Post Not Found");
   } else {
@@ -76,7 +84,7 @@ app.get("/api/posts/:post_id", (req, res) => {
 });
 
 app.post("/api/posts/new", upload.single("post_image"), (req, res) => {
-  // console.log(req.file);
+  console.log(req.file.path);
   const schema = Joi.object({
     title: Joi.string().min(3).required(),
     content: Joi.string().required(),
@@ -88,16 +96,16 @@ app.post("/api/posts/new", upload.single("post_image"), (req, res) => {
     res.status(400).send(error.details[0].message);
   }
 
-  const Post = {
-    id: Posts.length + 1,
+  const post = {
+    id: `${Date.now()}`,
     title: value.title,
     content: value.content,
     post_image: req.file.path,
     added_date: `${Date.now()}`,
   };
 
-  Posts.push(Post);
-  res.send(Posts);
+  postData.add(post);
+  res.status(201).send(post);
 });
 
 const port = 3000;
