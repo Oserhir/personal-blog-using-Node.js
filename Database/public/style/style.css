@@ -1,0 +1,152 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.post-link {
+  text-decoration: none;
+}
+
+/* header */
+header {
+  min-height: 280px;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/Front-end/assets/banner.jpeg);
+}
+
+.profile-image {
+  background-color: rgb(255, 255, 255);
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background-image: url(/Front-end/assets/profile.jpg);
+  background-size: cover;
+}
+
+.profile-name,
+.title {
+  margin-top: 15px;
+  font-size: 2.4em;
+  font-weight: bold;
+}
+
+.subtext {
+  margin-top: 8px;
+  font-weight: 400;
+}
+
+/* Main */
+.main {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.main-container {
+  width: 100%;
+  max-width: 750px;
+  min-width: 600px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Main > POST */
+
+.post {
+  display: flex;
+  border: 1px solid #d1d2d3;
+  border-radius: 8px;
+  min-height: 200px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  margin-top: 25px;
+}
+
+.post:hover {
+  transform: translate3d(0, -5px, 0);
+  box-shadow: 0 2rem 5rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.post-image {
+  flex-basis: 40%;
+  background-image: url(https://wallpapercave.com/wp/wp2465901.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.post-content {
+  flex-basis: 60%;
+  padding: 24px;
+}
+
+.post-date {
+  font-size: 12px;
+  color: #adb5bd;
+  font-weight: 600;
+}
+
+.post-title {
+  margin-top: 16px;
+  font-size: 1.5em;
+  color: #333;
+  font-weight: 600;
+}
+
+.post-title h4 {
+  margin: 0;
+}
+
+.post-text {
+  margin-top: 4px;
+  font-size: 0.9em;
+  color: #495057;
+  font-weight: 400;
+  line-height: 1.4;
+  max-height: 65px;
+  overflow: hidden;
+}
+
+/* footer */
+footer {
+  min-height: 100px;
+  background-color: #eaecee70;
+  color: #929eaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+/* Button */
+.nav-button.new-post-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  background-color: #004186;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: all 0.25s ease;
+}
+
+.nav-button.new-post-button:hover {
+  background-color: #002349;
+}
+
+a.post-link {
+  text-decoration: none;
+}
