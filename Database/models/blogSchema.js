@@ -6,7 +6,8 @@ const Schema = mongoose.Schema;
 const blogSchema = new Schema({
   title: String,
   content: String,
-  image: String,
+  post_image: String,
+  added_date: Date,
 });
 
 // Create a model based on that schema

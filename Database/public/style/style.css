@@ -17,7 +17,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url(/Front-end/assets/banner.jpeg);
+  background-image: url(/uploads/banner.jpeg);
 }
 
 .profile-image {
@@ -25,7 +25,7 @@ header {
   width: 130px;
   height: 130px;
   border-radius: 50%;
-  background-image: url(/Front-end/assets/profile.jpg);
+  background-image: url(/uploads/profile.jpg);
   background-size: cover;
 }
 
