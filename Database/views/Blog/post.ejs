@@ -3,11 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title> <%= Content['title'] %> </title>
+    <title><%= Content['title'] %></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/style/style.css" />
     <link rel="stylesheet" href="/style/post.css" />
+    <!--==================== https://iconscout.com/unicons/explore/line ====================-->
+
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
   </head>
   <body>
     <div class="container">
@@ -18,11 +24,15 @@
         <div class="main-container">
           <div class="navigation">
             <a href="/">Back</a>
+            <i class="uil uil-edit"></i>
+            <i class="uil uil-times-square"></i>
           </div>
 
           <div class="post-container">
             <div id="individual-post-title"><%= Content['title'] %></div>
-            <div id="individual-post-date"><%= Content['added_date'] %></div>
+            <div id="individual-post-date">
+              Posted on <%= Content['added_date'].toDateString() %>
+            </div>
             <div id="individual-post-content"><%= Content['content'] %>.</div>
           </div>
         </div>

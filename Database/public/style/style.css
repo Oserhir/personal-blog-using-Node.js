@@ -150,3 +150,19 @@ footer {
 a.post-link {
   text-decoration: none;
 }
+
+.navigation .uil {
+  position: relative;
+  top: 5px;
+  font-size: 30px;
+}
+
+.navigation .uil-edit {
+  color: #002349;
+  /* color: #072914; */
+}
+
+.navigation .uil-times-square {
+  color: #c73e26;
+  /* color: #072914; */
+}
