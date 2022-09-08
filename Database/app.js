@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const db = require("./config/database"); // connect to Database
+const bodyParser=require("body-parser");
 
 // Static File
 app.use(express.static("public"));
@@ -12,6 +13,13 @@ app.use("/uploads", express.static(__dirname + "public/uploads"));
 // Template Engine
 const ejs = require("ejs");
 app.set("view engine", "ejs");
+
+// Middleware
+// app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+   extended: true
+}));
 
 // Routes
 const blogRouter = require("./Router/blog");

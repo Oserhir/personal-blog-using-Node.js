@@ -24,30 +24,29 @@
           <div class="navigation">
             <a href="/">Back</a>
           </div>
+
+          <!--  <% if( errors ) { %> <% errors.details.forEach((err) => { %> <%=
+          err.message %> <% }); %> <% } %>
+ -->
           <div class="form-container">
-            <form>
+            <form method="POST">
               <input
                 id="form-post-title"
                 type="text"
-                name="post-title"
+                name="title"
                 placeholder="Post Title"
               />
+              <!--  Same Name inDatabase   -->
               <textarea
                 id="form-post-content"
-                name="post-content"
+                name="content"
                 placeholder="Post Content"
               ></textarea>
-              <div>
+              <!-- <div>
                 <label>Choose Image</label>
                 <input type="file" name="post-image" accept="image/*" />
-              </div>
-              <button
-                id="form-post-submit"
-                type="button"
-                onclick="submitNewPost()"
-              >
-                Submit
-              </button>
+              </div> -->
+              <button id="form-post-submit" type="submit">Submit</button>
             </form>
           </div>
         </div>
@@ -56,6 +55,6 @@
         <p>Made with ❤️ by Oserhir Youssef</p>
       </footer>
     </div>
-    <script src="./js/new-post.js"></script>
+    <script src="/js/index.js"></script>
   </body>
 </html>
