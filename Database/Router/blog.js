@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Blogs = require("../models/blogSchema");
 
+//
 router.get("/", (req, res) => {
   Blogs.find()
     .then((allData) => {
@@ -13,16 +14,16 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/api/posts/new", (req, res) => {
+router.get("/create", (req, res) => {
   res.render("Blog/createNewPost");
 });
 
-router.get("/api/posts/:post_id", (req, res) => {
+// Show Single Post
+router.get("/post/:post_id", (req, res) => {
   Blogs.findById(req.params.post_id)
     .then((dataByID) => {
       // res.send(allData);
-      res.render("Blog/index", { Content : dataByID });
-     
+      res.render("Blog/post", { Content: dataByID });
     })
     .catch((err) => {
       console.log(err);

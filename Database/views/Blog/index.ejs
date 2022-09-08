@@ -5,14 +5,14 @@
 <div class="main">
   <div class="main-container blog-posts">
 
-    <%   const API_URL = "http://localhost:3000/api/posts";   %>
+    <%   const API_URL = "http://localhost:3000/";   %>
     <%   const API_BASE_URL = "http://localhost:3000/";  %>
 
 
     <%  Blogs.forEach(   blog =>  {    %>
 
     <%   const postImage = API_BASE_URL + blog["post_image"] ;    %>
-    <%   const postLink = `/api/posts/${blog.id}`;   %>
+    <%   const postLink = `/post/${blog.id}`;   %>
     <%   const postDate = new Date(parseInt(blog.added_date)).toDateString();   %>
 
 
