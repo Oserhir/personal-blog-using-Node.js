@@ -11,11 +11,15 @@
   </head>
   <body>
     <div class="container new-post-page">
-      <header>
+      <header
+        style="
+          background-image: url(https://images.unsplash.com/photo-1472554117599-50e86139f312?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80);
+        "
+      >
         <div class="header-container">
           <div class="header-blog-text">
-            <div class="title">New Post</div>
-            <div class="subtext">Let's add a new blog post!</div>
+            <div class="title">Update Post</div>
+            <div class="subtext"></div>
           </div>
         </div>
       </header>
@@ -25,28 +29,19 @@
             <a href="/">Back</a>
           </div>
 
-          <!--  <% if( errors ) { %> <% errors.details.forEach((err) => { %> <%=
-          err.message %> <% }); %> <% } %>
- -->
           <div class="form-container">
-            <form method="POST" enctype="multipart/form-data">
-              <input
-                id="form-post-title"
-                type="text"
-                name="title"
-                placeholder="Post Title"
-              />
+            <form method="PATCH" enctype="multipart/form-data">
+              <input id="form-post-title" type="text" name="title" value = <%=
+              Content['title'] %> placeholder="Post Title" />
               <!--  Same Name inDatabase   -->
-              <textarea
-                id="form-post-content"
-                name="content"
-                placeholder="Post Content"
-              ></textarea>
+              <textarea id="form-post-content" name="content" placeholder="">
+<%= Content['content'] %> </textarea
+              >
               <div>
                 <label>Choose Image</label>
                 <input type="file" name="post_image" accept="image/*" />
               </div>
-              <button id="form-post-submit" type="submit">Submit</button>
+              <button id="form-post-submit" type="submit">Update</button>
             </form>
           </div>
         </div>

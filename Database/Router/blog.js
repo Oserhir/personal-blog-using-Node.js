@@ -4,6 +4,29 @@ const Blogs = require("../models/blogSchema");
 const BlogClass = require("../models/blogSchema");
 const Joi = require("joi");
 
+const multer = require("multer");
+
+//Configuration for Multer
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./public/images");
+  },
+  filename: function (req, file, cb) {
+    cb(null, `${file.fieldname}-${Date.now()}${getExt(file.mimetype)}`);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+const getExt = (mimetype) => {
+  switch (mimetype) {
+    case "image/png":
+      return ".png";
+    case "image/jpeg":
+      return ".jpg";
+  }
+};
+
 // Get All Post
 router.get("/", (req, res) => {
   Blogs.find()
@@ -33,9 +56,11 @@ router.get("/create", (req, res) => {
   res.render("Blog/createNewPost", { errors: false });
 });
 
-router.post("/create", (req, res) => {
+router.post("/create", upload.single("post_image"), (req, res) => {
+  // public\images\post_image-1662683835098.png
+
   const schema = Joi.object({
-    title: Joi.string().min(10).required(),
+    title: Joi.string().required(),
     content: Joi.string().required(),
   });
 
@@ -49,7 +74,7 @@ router.post("/create", (req, res) => {
     const blog = new BlogClass({
       title: value.title,
       content: value.content,
-      post_image: "images/post-image-1581376324096.png",
+      post_image: `images/${req.file.filename}`,
       added_date: `${Date.now()}`,
     });
 
@@ -59,41 +84,36 @@ router.post("/create", (req, res) => {
       .catch((err) => console.log(err));
   }
 
-  // res.render("Blog/createNewPost");
+  // res.render("Blog/createNewPost"); */
+});
+
+// Edit Route
+
+router.get("/edit/:post_id", (req, res) => {
+  Blogs.findById(req.params.post_id)
+    .then((dataByID) => {
+      res.render("Blog/Edit", { Content: dataByID });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+router.put("/edit/:post_id", upload.single("post_image"), (req, res) => {
+  const post_id = req.params.post_id;
+  Blogs.findByIdAndUpdate(
+    post_id,
+    {
+      title: req.body.title,
+      content: req.body.content,
+      post_image: `images/${req.file.filename}`,
+    },
+    (err) => {
+      if (err) {
+        console.log(err);
+      }
+    }
+  );
 });
 
 module.exports = router;
-
-/*
-app.post("/api/posts/new", upload.single("post_image"), (req, res) => {
-
- const schema = Joi.object({
-    title: Joi.string().min(3).required(),
-    content: Joi.string().required(),
-  });
-
-  const { error, value } = schema.validate(req.body);
-
-  if (error) {
-    res.status(400).send(error.details[0].message);
-  } 
-
-  const post = {
-    id: `${Date.now()}`,
-    title: value.title,
-    content: value.content,
-    post_image: req.file.path,
-    added_date: `${Date.now()}`,
-  };
-
-  postData.add(post);
-  res.status(201).send(post);
-}); */
-
-/*
-app.get("/api/posts", (req, res) => {});
-
-app.get("/api/posts/:post_id", (req, res) => {});
-
-app.post("/api/posts/new", (req, res) => {});
-*/
