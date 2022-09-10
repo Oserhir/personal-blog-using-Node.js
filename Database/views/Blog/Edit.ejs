@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>New Post</title>
+    <title>EDIT Post</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/style/style.css" />
@@ -30,22 +30,32 @@
           </div>
 
           <div class="form-container">
-            <form method="PATCH" enctype="multipart/form-data">
-              <input id="form-post-title" type="text" name="title" value = <%=
-              Content['title'] %> placeholder="Post Title" />
+            <form method="POST" action="/edit/<%= Content._id  %>">
+              <input
+                id="form-post-title"
+                type="text"
+                name="title"
+                placeholder="Post Title"
+                value="<%= Content.title %>"
+              />
               <!--  Same Name inDatabase   -->
-              <textarea id="form-post-content" name="content" placeholder="">
-<%= Content['content'] %> </textarea
+              <textarea
+                id="form-post-content"
+                name="content"
+                placeholder="Post Content"
+              >
+ <%=  Content.content %>  </textarea
               >
               <div>
                 <label>Choose Image</label>
                 <input type="file" name="post_image" accept="image/*" />
               </div>
-              <button id="form-post-submit" type="submit">Update</button>
+              <button id="form-post-submit" type="submit">Submit</button>
             </form>
           </div>
         </div>
       </div>
+
       <footer>
         <p>Made with ❤️ by Oserhir Youssef</p>
       </footer>

@@ -30,6 +30,7 @@ const getExt = (mimetype) => {
 // Get All Post
 router.get("/", (req, res) => {
   Blogs.find()
+    .sort({ added_date: -1 })
     .then((allData) => {
       res.render("Blog/index", { Blogs: allData });
       //  console.log(allData); // Get all Data inside MongoDB
@@ -58,7 +59,6 @@ router.get("/create", (req, res) => {
 
 router.post("/create", upload.single("post_image"), (req, res) => {
   // public\images\post_image-1662683835098.png
-
   const schema = Joi.object({
     title: Joi.string().required(),
     content: Joi.string().required(),
@@ -83,37 +83,68 @@ router.post("/create", upload.single("post_image"), (req, res) => {
       .then((result) => res.redirect("/"))
       .catch((err) => console.log(err));
   }
-
-  // res.render("Blog/createNewPost"); */
 });
 
-// Edit Route
+/// Delete Post
 
-router.get("/edit/:post_id", (req, res) => {
-  Blogs.findById(req.params.post_id)
-    .then((dataByID) => {
-      res.render("Blog/Edit", { Content: dataByID });
+router.delete("/blogs/:id", (req, res) => {
+  Blogs.findByIdAndDelete(req.params.id)
+    .then((params) => {
+      res.json({ mylink: "/" });
+    })
+
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+/*
+router.put("/edit/:id", (req, res) => {
+  // crete obj
+  const blog = new Blogs({
+    _id: req.body.id,
+    title: req.body.title,
+    body: req.body.body,
+  });
+
+  blog
+    .updateOne({ _id: req.body.id }, blog)
+    .then((result) => {
+      console.log("update Succesfuly");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+*/
+/* EDIT */
+// EDIT USER POST ACTION
+router.post("/edit/:id", (req, res) => {
+  const blog = new Blogs({
+    _id: req.params.id,
+    title: req.body.title,
+    content: req.body.content,
+  });
+
+  Blogs.updateOne({ _id: req.params.id }, blog)
+    .then(() => {
+      res.redirect("/");
     })
     .catch((err) => {
       console.log(err);
     });
 });
 
-router.put("/edit/:post_id", upload.single("post_image"), (req, res) => {
-  const post_id = req.params.post_id;
-  Blogs.findByIdAndUpdate(
-    post_id,
-    {
-      title: req.body.title,
-      content: req.body.content,
-      post_image: `images/${req.file.filename}`,
-    },
-    (err) => {
-      if (err) {
-        console.log(err);
-      }
-    }
-  );
+/// SHOW EDIT USER FORM
+router.get("/edit/:id", (req, res) => {
+  const Id = req.params.id;
+  Blogs.findById(Id)
+    .then((dataByID) => {
+      res.render("Blog/Edit", { Content: dataByID });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 module.exports = router;

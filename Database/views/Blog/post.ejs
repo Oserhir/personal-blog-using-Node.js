@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/style/style.css" />
     <link rel="stylesheet" href="/style/post.css" />
     <!--==================== https://iconscout.com/unicons/explore/line ====================-->
-
     <link
       rel="stylesheet"
       href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
@@ -27,7 +26,9 @@
             <a href="/edit/<%=Content['_id'] %>">
               <i class="uil uil-edit"></i>
             </a>
-            <i class="uil uil-times-square"></i>
+            <a data-linkid="<%= Content.id  %>" class="create">
+              <i class="uil uil-times-square"></i>
+            </a>
           </div>
 
           <div class="post-container">
@@ -46,3 +47,14 @@
     <script src="/js/index.js" async defer></script>
   </body>
 </html>
+
+<script>
+  const btnelement = document.querySelector(".create");
+  const articleId = btnelement.getAttribute("data-linkid");
+  // what is data ?  ---> { mylink: "/all-articles" }
+  btnelement.addEventListener("click", (eo) => {
+    fetch(`/blogs/${articleId}`, { method: "DELETE" })
+      .then((response) => response.json())
+      .then((data) => (window.location.href = data.mylink));
+  });
+</script>
