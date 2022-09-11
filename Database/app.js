@@ -6,6 +6,7 @@ const db = require("./config/database"); // Connect to Database
 
 // Initalise a new express application
 const app = express();
+
 // Flash
 const session = require("express-session");
 const flash = require("connect-flash");
@@ -31,7 +32,7 @@ app.use(
   })
 );
 
-// Set Cookie Parser, sessions and flash
+// Configiration -- Set Cookie Parser, sessions and flash
 app.use(cookieParser("SecritStringForCookies")); // Create a new cookie parser middleware
 app.use(
   session({

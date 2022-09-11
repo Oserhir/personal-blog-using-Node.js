@@ -43,7 +43,6 @@ router.get("/", (req, res) => {
 router.get("/post/:post_id", (req, res) => {
   Blogs.findById(req.params.post_id)
     .then((dataByID) => {
-      // res.send(allData);
       res.render("Blog/post", { Content: dataByID });
     })
     .catch((err) => {
@@ -52,12 +51,15 @@ router.get("/post/:post_id", (req, res) => {
 });
 
 /* Save Data to MongoDB */
+/** GET /  Create Page */
 router.get("/create", (req, res) => {
-  res.render("Blog/createNewPost", { errors: false });
-});
+  // Set a flash name and pass it to the home page.
+  // If empty, we won't display. That's handled by EJS.
 
+  res.render("Blog/createNewPost", { MESSAGE: req.flash("danger") });
+});
+/** Post /  Create Page */
 router.post("/create", upload.single("post_image"), (req, res) => {
-  // public\images\post_image-1662683835098.png
   const schema = Joi.object({
     title: Joi.string().required(),
     content: Joi.string().required(),
@@ -65,9 +67,13 @@ router.post("/create", upload.single("post_image"), (req, res) => {
 
   const { error, value } = schema.validate(req.body);
 
-  if (error) {
-    res.render("Blog/createNewPost", { errors: error });
-
+  if (error || req.file == null) {
+    req.flash(
+      "danger",
+      "One or more fields have an error. please check and try again"
+    );
+    res.redirect("/create");
+    //res.render("Blog/createNewPost", { errors: false });
     //  res.status(400).send(error.details[0].message);
   } else {
     const blog = new BlogClass({
@@ -107,8 +113,12 @@ router.post("/edit/:id", upload.single("post_image"), (req, res) => {
 
   const { error, value } = schema.validate(req.body);
 
-  if (error) {
-    res.redirect("/create");
+  if (error || req.file == null) {
+    req.flash(
+      "danger",
+      "One or more fields have an error. please check and try again"
+    );
+    res.redirect(`/edit/${req.params.id}`);
   } else {
     const blog = new Blogs({
       _id: req.params.id,
@@ -132,7 +142,10 @@ router.get("/edit/:id", (req, res) => {
   const Id = req.params.id;
   Blogs.findById(Id)
     .then((dataByID) => {
-      res.render("Blog/Edit", { Content: dataByID });
+      res.render("Blog/Edit", {
+        Content: dataByID,
+        MESSAGE: req.flash("danger"),
+      });
     })
     .catch((err) => {
       console.log(err);

@@ -29,6 +29,12 @@
             <a href="/">Back</a>
           </div>
 
+          <% if( MESSAGE ) { %>
+          <div class="alert alert-danger alert-create" role="alert">
+            <%= MESSAGE %>
+          </div>
+          <% }; %>
+
           <div class="form-container">
             <form
               method="POST"

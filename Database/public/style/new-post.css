@@ -49,3 +49,8 @@ form > * {
   border-radius: 5px;
   border: 1px solid rgb(87, 87, 87);
 }
+
+.alert-create {
+  font-size: 16px;
+  color: #721c24;
+}
