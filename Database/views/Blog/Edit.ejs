@@ -30,7 +30,11 @@
           </div>
 
           <div class="form-container">
-            <form method="POST" action="/edit/<%= Content._id  %>">
+            <form
+              method="POST"
+              action="/edit/<%= Content._id  %>"
+              enctype="multipart/form-data"
+            >
               <input
                 id="form-post-title"
                 type="text"

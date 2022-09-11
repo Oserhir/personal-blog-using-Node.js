@@ -3,7 +3,6 @@ const router = express.Router();
 const Blogs = require("../models/blogSchema");
 const BlogClass = require("../models/blogSchema");
 const Joi = require("joi");
-
 const multer = require("multer");
 
 //Configuration for Multer
@@ -40,7 +39,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// Show Single Post
+// Get Single Post
 router.get("/post/:post_id", (req, res) => {
   Blogs.findById(req.params.post_id)
     .then((dataByID) => {
@@ -98,41 +97,34 @@ router.delete("/blogs/:id", (req, res) => {
     });
 });
 
-/*
-router.put("/edit/:id", (req, res) => {
-  // crete obj
-  const blog = new Blogs({
-    _id: req.body.id,
-    title: req.body.title,
-    body: req.body.body,
-  });
-
-  blog
-    .updateOne({ _id: req.body.id }, blog)
-    .then((result) => {
-      console.log("update Succesfuly");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-*/
 /* EDIT */
 // EDIT USER POST ACTION
-router.post("/edit/:id", (req, res) => {
-  const blog = new Blogs({
-    _id: req.params.id,
-    title: req.body.title,
-    content: req.body.content,
+router.post("/edit/:id", upload.single("post_image"), (req, res) => {
+  const schema = Joi.object({
+    title: Joi.string().min(3).max(30).required(),
+    content: Joi.string().required(),
   });
 
-  Blogs.updateOne({ _id: req.params.id }, blog)
-    .then(() => {
-      res.redirect("/");
-    })
-    .catch((err) => {
-      console.log(err);
+  const { error, value } = schema.validate(req.body);
+
+  if (error) {
+    res.redirect("/create");
+  } else {
+    const blog = new Blogs({
+      _id: req.params.id,
+      title: value.title,
+      content: value.content,
+      post_image: `images/${req.file.filename}`,
     });
+
+    Blogs.updateOne({ _id: req.params.id }, blog)
+      .then(() => {
+        res.redirect("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 });
 
 /// SHOW EDIT USER FORM
