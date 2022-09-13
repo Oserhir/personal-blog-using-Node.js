@@ -48,6 +48,8 @@ app.use(flash());
 const blogRouter = require("./Router/blog");
 app.use("/", blogRouter);
 
+const userRouter = require("./Router/user-route");
+app.use("/", userRouter);
 // Set a default environment port or cutom port - 3000
 const port = process.env.PORT || 3000;
 // Start out application
