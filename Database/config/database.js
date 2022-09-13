@@ -9,10 +9,6 @@ const dbURL =
 mongoose
   .connect(dbURL)
   .then(() => {
-    /*
-    app.listen(port, () => {
-      console.log(`Server is running on port ${port} `);
-    }); */
     console.log("Connect to MongooDB....");
   })
 
