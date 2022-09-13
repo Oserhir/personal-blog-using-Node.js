@@ -1,12 +1,27 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/SignUp.css" />
   </head>
   <body>
-    <h1>Sign Up</h1>
+    <nav>
+      <h1><a href="/">Sign UP Page</a></h1>
+      <ul>
+        <li><a href="/login">Log in</a></li>
+        <li><a href="/signup" class="btn">Sign up</a></li>
+      </ul>
+    </nav>
+    <form action="/SignUp" method="post">
+      <h2>Sign up</h2>
+      <label for="email">Email</label>
+      <input type="text" name="email" required />
+      <div class="email error"></div>
+      <label for="password">Password</label>
+      <input type="password" name="password" required />
+      <div class="password error"></div>
+      <button>Sign up</button>
+    </form>
   </body>
 </html>

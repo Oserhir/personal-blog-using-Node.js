@@ -17,17 +17,17 @@ module.exports.signup_post = (req, res) => {
   // Joi Validation
   if (error) {
     res.status(400).send(error.details[0].message);
+  } else {
+    const { email, password } = value; // email = value.email
+    // The create() function is a thin wrapper around the save() function
+    User.create({ email, password })
+      .then((user) => {
+        res.status(201).send(user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
-
-  const { email, password } = value; // email = value.email
-  // The create() function is a thin wrapper around the save() function
-  User.create({ email, password })
-    .then((user) => {
-      res.status(201).send(user);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
 };
 
 module.exports.login_get = (req, res) => {
@@ -35,5 +35,5 @@ module.exports.login_get = (req, res) => {
 };
 
 module.exports.login_post = async (req, res) => {
-  // res.send("user login");
+  console.log(req.body);
 };
