@@ -4,7 +4,8 @@ const jwt = require("jsonwebtoken");
 
 // controller actions
 module.exports.signup_get = (req, res) => {
-  res.render("user/SignUp");
+  res.render("user/SignUp", { MESSAGE: req.flash("danger") });
+  // res.render("user/SignUp");
 };
 
 module.exports.signup_post = (req, res) => {
@@ -17,16 +18,27 @@ module.exports.signup_post = (req, res) => {
 
   // Joi Validation
   if (error) {
-    res.render("user/SignUp", { Content: dataByID });
-    // res.status(400).send(error.details[0].message);
+    req.flash("danger", error.details[0].message);
+    res.redirect("/SignUp");
+    //res.status(400).send(error.details[0].message);
   } else {
+    // check if user already exists in database
+    User.findOne({ email: value.email }).then((result) => {
+      if (result) {
+        req.flash("danger", "User already exists");
+        res.redirect("/SignUp");
+        //  res.status(400).send("User already exists");
+      }
+    });
+
     const { email, password } = value; // email = value.email
     // The create() function is a thin wrapper around the save() function
     User.create({ email, password })
       .then((user) => {
         const token = createToken(user._id); // send the user Id after create
         res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 }); // place token inside cookies and send as response
-        res.status(201).send(user);
+        // res.status(201).send(user);
+        res.redirect("/all-posts");
       })
       .catch((err) => {
         console.log(err);

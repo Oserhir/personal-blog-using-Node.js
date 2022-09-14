@@ -15,7 +15,8 @@
     </nav>
     <form action="/SignUp" method="post">
       <h2>Sign up</h2>
-      <%=     %>
+      <% if ( MESSAGE ) { %> <%= MESSAGE %> <% } %>
+
       <label for="email">Email</label>
       <input type="text" name="email" required />
       <div class="email error"></div>
