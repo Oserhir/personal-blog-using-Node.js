@@ -7,10 +7,14 @@ const db = require("./config/database"); // Connect to Database
 // Initalise a new express application
 const app = express();
 
+//Parse Cookie header
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+
 // Flash
 const session = require("express-session");
 const flash = require("connect-flash");
-const cookieParser = require("cookie-parser");
+// const cookieParser = require("cookie-parser");
 
 // Static File
 app.use(express.static("images"));
