@@ -7,6 +7,8 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/style/style.css" />
+    <!-- Style Navbar -->
+    <link rel="stylesheet" href="style/Toonav.css" />
   </head>
   <body>
     <div class="add-post">
@@ -14,11 +16,11 @@
         <div class="nav-button new-post-button">+</div>
       </a>
     </div>
-
-    <header>
+    <%- include('../user/partials/topbar.ejs'); %>
+    <!--   <header>
       <div class="profile-image"></div>
       <div class="profile-name">Oserhir Youssef</div>
       <div class="subtext">Welcome to my blog!!</div>
-    </header>
+    </header> -->
   </body>
 </html>

@@ -27,7 +27,7 @@ const getExt = (mimetype) => {
 };
 
 // Get All Post
-router.get("/all-posts", (req, res) => {
+router.get("/", (req, res) => {
   Blogs.find()
     .sort({ added_date: -1 })
     .then((allData) => {
@@ -85,7 +85,7 @@ router.post("/create", upload.single("post_image"), (req, res) => {
 
     blog
       .save()
-      .then((result) => res.redirect("/all-posts"))
+      .then((result) => res.redirect("/"))
       .catch((err) => console.log(err));
   }
 });
@@ -95,7 +95,7 @@ router.post("/create", upload.single("post_image"), (req, res) => {
 router.delete("/blogs/:id", (req, res) => {
   Blogs.findByIdAndDelete(req.params.id)
     .then((params) => {
-      res.json({ mylink: "/all-posts" });
+      res.json({ mylink: "/" });
     })
 
     .catch((err) => {
@@ -129,7 +129,7 @@ router.post("/edit/:id", upload.single("post_image"), (req, res) => {
 
     Blogs.updateOne({ _id: req.params.id }, blog)
       .then(() => {
-        res.redirect("/all-posts");
+        res.redirect("/");
       })
       .catch((err) => {
         console.log(err);
