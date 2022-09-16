@@ -42,7 +42,7 @@ nav ul li a:hover {
 
 button {
   border: none;
-  background: #ae1538;
+  background: #5fc2e6;
   padding: 12px 30px;
   border-radius: 10px;
   color: white;
@@ -51,7 +51,7 @@ button {
 }
 
 button:hover {
-  transform: scale(1.3);
+  transform: scale(1.1);
   cursor: pointer;
 }
 

@@ -41,34 +41,6 @@ const blogs = [
     post_image: "images/post-image-1581377760883.jpg",
     added_date: "1581377760891",
   }),
-  new BlogClass({
-    title: "I LOVE JavaScript",
-    content:
-      "I have been using JavaScript since the beginning of my coding career!\nI used it to build simple websites and I used it to build large scale applications!  \nNow I use it to teach others, as well as create large applications. The possibilities of this language are endless, and the use cases keep increasing every single day! ",
-    post_image: "images/post-image-1581376324096.png",
-    added_date: "1581376324100",
-  }),
-  new BlogClass({
-    title: "Why learning coding is important?",
-    content:
-      "Nowadays with everything being electronic, everything needs to be programmed! \n\nFrom computers, to cars, machines, or anything else it most likely requires programming!\n\nSo as a result, demand for coders keeps increasing year by year, due to all these technological advances!",
-    post_image: "images/post-image-1581375207393.jpg",
-    added_date: "1581375207401",
-  }),
-  new BlogClass({
-    title: "I LOVE JavaScript",
-    content:
-      "I have been using JavaScript since the beginning of my coding career!\nI used it to build simple websites and I used it to build large scale applications!  \nNow I use it to teach others, as well as create large applications. The possibilities of this language are endless, and the use cases keep increasing every single day! ",
-    post_image: "images/post-image-1581376324096.png",
-    added_date: "1581376324100",
-  }),
-  new BlogClass({
-    title: "Why learning coding is important?",
-    content:
-      "Nowadays with everything being electronic, everything needs to be programmed! \n\nFrom computers, to cars, machines, or anything else it most likely requires programming!\n\nSo as a result, demand for coders keeps increasing year by year, due to all these technological advances!",
-    post_image: "images/post-image-1581375207393.jpg",
-    added_date: "1581375207401",
-  }),
 ];
 
 blogs.forEach((blog) => {

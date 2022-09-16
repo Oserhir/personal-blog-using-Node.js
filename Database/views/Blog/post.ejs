@@ -8,8 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/style/style.css" />
     <link rel="stylesheet" href="/style/post.css" />
-    <!-- Style Navbar -->
-    <link rel="stylesheet" href="/style/Toonav.css" />
+
     <!--==================== https://iconscout.com/unicons/explore/line ====================-->
     <link
       rel="stylesheet"
@@ -17,7 +16,6 @@
     />
   </head>
   <body>
-    <%- include('../user/partials/topbar.ejs'); %>
     <div class="container">
       <% const API_BASE_URL = "http://localhost:3000/" ; const post_image =
       API_BASE_URL + Content['post_image'] ; %>
@@ -25,7 +23,7 @@
       <div class="main">
         <div class="main-container">
           <div class="navigation">
-            <a href="/all-posts">Back</a>
+            <a href="/">Back</a>
             <a href="/edit/<%=Content['_id'] %>">
               <i class="uil uil-edit"></i>
             </a>
