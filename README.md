@@ -3,6 +3,8 @@
 ## Goals
 Create a blog to be able to share and stories and knowledge with others
 
+Live URL : https://personalblog10.herokuapp.com/
+
 ## User Stories
 
 * As a viewer I want to see the list of blog post so that I can see the blog and topics for me to choose 
