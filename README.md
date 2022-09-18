@@ -1,11 +1,9 @@
 # My Blog Software Requirements
 
 ## Goals
-1.	Create a blog to be able to share and stories and knowledge with others
+Create a blog to be able to share and stories and knowledge with others
 
 ## User Stories
-
-As a User , I want Goal so that some reason
 
 * As a viewer I want to see the list of blog post so that I can see the blog and topics for me to choose 
 * As a viewer I want to view an individual blog post so that I can read all of it’s content
@@ -44,13 +42,13 @@ As a User , I want Goal so that some reason
        *	Rest API
   *	Database
        *	MongoDB
-•	API Endpoints
+  * API Endpoints
     *	Get List of Blog Post
         * api/posts
     * Get Individual Blog Post
         *	api/posts/:post_id
     *	Post Blog Post
-      *	api/posts 
+        *	api/posts 
 
 
 
