@@ -53,6 +53,11 @@ Live URL : https://personalblog10.herokuapp.com/
         *	api/posts 
 
 
+## How to run the app
+1. Either fork or download the app  and open  the folder  in the cli
+2. install all dependencies using "npm i" command
+3. ...
+4. ....
 
 
 <br/>
