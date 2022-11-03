@@ -7,14 +7,14 @@ Live URL : https://personalblog10.herokuapp.com/
 
 ## User Stories
 
-* As a viewer I want to see the list of blog post so that I can see the blog and topics for me to choose 
-* As a viewer I want to view an individual blog post so that I can read all of it’s content
-* As an admin I want to add a new blog post so that I can easily add a content to my blog 
-* As an admin I want to delete or edit a blog post 
+As a viewer I want to
 
-## User Flow
-![image](https://user-images.githubusercontent.com/82850895/190915155-3d954bb4-6e63-41f9-b77c-bfdf61e2f827.png)
-![image](https://user-images.githubusercontent.com/82850895/190915179-97ddc0d6-425c-4864-8749-cca3bc5840fd.png)
+* see the list of blog post so that I can see the blog and topics for me to choose 
+* view an individual blog post so that I can read all of it’s content
+* add a new blog post so that I can easily add a content to my blog 
+* delete or edit a blog post 
+
+ 
 
 ## Business Requirement
 * Pages
